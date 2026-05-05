@@ -1,0 +1,113 @@
+#include <iostream>
+#include "graphics.h"
+#include <math.h>
+using namespace std;
+دالة رسم المركبة //
+void drawSpaceship(int x, int y)
+{
+setcolor(WHITE);
+جسم المركبة //
+rectangle(x - 25, y - 60, x + 25, y + 40);
+setfillstyle(SOLID_FILL, BLUE);
+floodfill(x, y, WHITE);
+رأس المركبة //
+line(x - 25, y - 60, x, y - 110);
+line(x + 25, y - 60, x, y - 110);
+setfillstyle(SOLID_FILL, RED);
+floodfill(x, y - 70, WHITE);
+الأجنحة //
+line(x - 25, y, x - 50, y + 40);
+line(x - 50, y + 40, x - 25, y + 40);
+line(x + 25, y, x + 50, y + 40);
+line(x + 50, y + 40, x + 25, y + 40);
+setfillstyle(SOLID_FILL, RED);
+floodfill(x - 30, y + 35, WHITE);
+floodfill(x + 30, y + 35, WHITE);
+النافذة //
+circle(x, y - 20, 12);
+setfillstyle(SOLID_FILL, CYAN);
+floodfill(x, y - 20, WHITE);
+النار المحركة //
+setcolor(WHITE);
+line(x - 15, y + 40, x, y + 90);
+line(x + 15, y + 40, x, y + 90);
+setfillstyle(SOLID_FILL, YELLOW);
+floodfill(x, y + 60, WHITE);
+}
+دالة رسم النجوم //
+void drawStars()
+{
+setcolor(YELLOW);
+setfillstyle(SOLID_FILL, YELLOW);
+النجوم على اليمي //
+fillellipse(670, 170, 3, 3);
+fillellipse(580, 270, 4, 4);
+fillellipse(700, 360, 3, 3);
+fillellipse(610, 460, 4, 4);
+fillellipse(700, 560, 3, 3);
+النجوم على اليسار //
+fillellipse(70, 160, 3, 3);
+fillellipse(200, 240, 4, 4);
+fillellipse(90, 340, 3, 3);
+fillellipse(190, 440, 4, 4);
+fillellipse(100, 550, 3, 3);
+}
+دالة رسم الكواكب (ثابتة) //
+void drawPlanets()
+{
+الكوك ا- ] أعلى اليسار
+لأول: البنفint p1_x = 150;
+int p1_y = 120;
+رسم الكوكب //
+setcolor(COLOR(155, 89, 182));
+setfillstyle(SOLID_FILL, COLOR(155, 89, 182));
+fillellipse(p1_x, p1_y, 40, 40);
+رسم الحلقة حول الكوكب (لون رمادي فاتح) //
+setcolor(LIGHTGRAY);
+ellipse(p1_x, p1_y, 0, 360, 60, 15);
+الكو كب ا--- ] أسفل اليمي
+-
+لثان ي : اint p2_x = 550;
+int p2_y = 400;
+رسم الكوكب //
+setcolor(COLOR(230, 126, 34));
+setfillstyle(SOLID_FILL, COLOR(230, 126, 34));
+fillellipse(p2_x, p2_y, 45, 45);
+ر سم الخطوط التفصيلية (لون بر تقال ي غامق) //
+setcolor(COLOR(211, 84, 0));
+line(p2_x - 40, p2_y - 10, p2_x + 40, p2_y - 10);
+line(p2_x - 35, p2_y + 10, p2_x + 35, p2_y + 10);
+}
+دالة رسم القمر (ثابت) //
+void drawMoon()
+{
+int moon_x = 650;
+int moon_y = 100;
+ر سم جسم القمر الأساس ي (ر مادي فاتح) //
+setcolor(COLOR(220, 220, 220));
+setfillstyle(SOLID_FILL, COLOR(220, 220, 220));
+fillellipse(moon_x, moon_y, 40, 40);
+رسم الفوهات والتفاصيل (رمادي غامق) //
+setcolor(COLOR(180, 180, 180));
+setfillstyle(SOLID_FILL, COLOR(180, 180, 180));
+الفوهة الأول //
+fillellipse(moon_x - 10, moon_y - 15, 5, 5);
+الفوهة الثانية //
+fillellipse(moon_x + 16, moon_y + 11, 6, 6);
+الفوهة الثالثة //
+fillellipse(moon_x - 14, moon_y + 16, 6, 6);
+}
+{
+int main()
+فتح نافذة الرسم //
+initwindow(800, 600, "Space Mission - Static Scene");
+ر سم جميع العناصر بالب ر تيب من الخلفية للأمام //
+رسم النجوم // ;)(drawStars
+رسم الكواكب // ;)(drawPlanets
+ر سم القمر ف ي أعلى اليمي // ;)(drawMoon
+ر سم المر كبة ف ي المنتصف // ;)300 ,400(drawSpaceship
+إبقاء الشاشة مفتوحة //
+getch();
+closegraph();
+return 0;
+}
